@@ -1,4 +1,4 @@
-# Rollup Babel Two Bundle Starter
+# Rollup Babel Two Bundle Build
 
 Rollup and Babel configuration and build script to deploy ES2015+ code to production (via `<script type="module">`) 
 with legacy browser fallback support via `<script nomodule>`.
