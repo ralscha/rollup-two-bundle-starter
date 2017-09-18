@@ -3,7 +3,8 @@
   "version": "1.0.0",
   "description": "",
   "scripts": {
-    "dist": "cross-env NODE_ENV=production npm run build && npm run build:hash && shx rm dist/main.css && shx rm dist/bundle.js",
+    "dist": "cross-env NODE_ENV=production npm run build && npm run uglify && npm run build:hash && shx rm dist/main.css && shx rm dist/bundle.js && shx rm dist/bundle-legacy.js",
+    "uglify": "uglifyjs --compress --mangle -o dist/bundle.js dist/bundle.js && uglifyjs --compress --mangle -o dist/bundle-legacy.js dist/bundle-legacy.js",
     "clean": "shx rm -rf dist",
     "prebuild": "npm run clean",
     "build": "npm run build:js && npm run build:css && npm run build:html && npm run build:assets",
@@ -44,9 +45,9 @@
     "rollup-plugin-commonjs": "^8.2.1",
     "rollup-plugin-node-resolve": "^3.0.0",
     "rollup-plugin-replace": "^2.0.0",
-    "rollup-plugin-uglify-es": "0.0.1",
     "serve": "^6.1.0",
     "shx": "^0.2.2",
+    "uglify-es": "^3.1.1",
     "whatwg-fetch": "^2.0.3"
   }
 }
