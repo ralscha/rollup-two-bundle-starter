@@ -27,16 +27,16 @@ function createPluginConfig(browsers) {
 			babelrc: false,
 			exclude: 'node_modules/**',
 			presets: [
-				['env', {
+				['@babel/preset-env', {
 				  debug: true,
 				  modules: false,
-				  useBuiltIns: true,
+				  useBuiltIns: 'entry',
 				  targets: {
 					browsers: browsers,
 				  },
 				}],
 			  ],
-			  plugins: ['syntax-dynamic-import']
+			  plugins: ['@babel/plugin-syntax-dynamic-import']
 		}),	
 		resolve({
 			module: true,
