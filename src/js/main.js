@@ -1,4 +1,5 @@
-import '@babel/polyfill';
+import 'core-js/stable';
+import 'regenerator-runtime/runtime';
 import {dep1} from './dep-1.js';
 import {dep2} from './dep-2.js';
 
@@ -10,9 +11,7 @@ const main = async () => {
 
   outputElement.innerText = 'Fetching data, awaiting response...';
   const response = await fetch('https://httpbin.org/user-agent');
-  const responseText = await response.text();
-  
-  outputElement.innerText = responseText;
+  outputElement.innerText = await response.text();
 };
 
 main();

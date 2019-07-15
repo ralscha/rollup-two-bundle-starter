@@ -31,6 +31,7 @@ function createPluginConfig(browsers) {
 				  debug: true,
 				  modules: false,
 				  useBuiltIns: 'entry',
+				  corejs: 3,
 				  targets: {
 					browsers: browsers,
 				  },
@@ -39,9 +40,7 @@ function createPluginConfig(browsers) {
 			  plugins: ['@babel/plugin-syntax-dynamic-import']
 		}),	
 		resolve({
-			module: true,
-			jsnext: true,
-			main: true,
+			mainFields: ['module', 'main', 'jsnext'],
 			browser: true
 		}),
 		commonjs(),
