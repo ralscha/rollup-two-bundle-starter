@@ -2,6 +2,7 @@ import resolve from 'rollup-plugin-node-resolve';
 import commonjs from 'rollup-plugin-commonjs';
 import replace from 'rollup-plugin-replace';
 import babel from 'rollup-plugin-babel';
+import { terser } from 'rollup-plugin-terser';
 
 const production = (process.env.NODE_ENV === 'production');
 
@@ -28,9 +29,10 @@ function createPluginConfig(browsers) {
 			exclude: 'node_modules/**',
 			presets: [
 				['@babel/preset-env', {
-				  debug: true,
+				  debug: false,
+				  loose: true,
 				  modules: false,
-				  useBuiltIns: 'entry',
+				  useBuiltIns: 'usage',
 				  corejs: 3,
 				  targets: {
 					browsers: browsers,
@@ -47,14 +49,15 @@ function createPluginConfig(browsers) {
 		replace({
 			exclude: 'node_modules/**',
 			ENV: JSON.stringify(process.env.NODE_ENV || 'development'),
-		})
+		}),
+		terser()
 	];
 }
 
 export default [{
 	input: 'src/js/main.js',
 	output: {
-      file: 'dist/bundle.js',
+	  file: 'dist/bundle.js',
       format: 'iife',
       name: 'starter',
       sourcemap: !production

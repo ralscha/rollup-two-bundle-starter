@@ -3,8 +3,9 @@
 Rollup and Babel configuration and build script to deploy ES2015+ code to production (via `<script type="module">`) 
 with legacy browser fallback support via `<script nomodule>`.
 
-This starter app is an implementation of the techniques described in Philip Walton's 
-blog post: [Deploying ES2015+ Code in Production Today](https://philipwalton.com/articles/deploying-es2015-code-in-production-today/).
+This starter app is an implementation of techniques described in Philip Walton's 
+blog post [Deploying ES2015+ Code in Production Today](https://philipwalton.com/articles/deploying-es2015-code-in-production-today/) and Jason Miller's blog post [Modern Script Loading](https://jasonformat.com/modern-script-loading/)
+
 
 ## Usage
 To view the site locally, run the following command:
