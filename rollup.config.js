@@ -1,8 +1,8 @@
-import resolve from 'rollup-plugin-node-resolve';
-import commonjs from 'rollup-plugin-commonjs';
-import replace from 'rollup-plugin-replace';
-import babel from 'rollup-plugin-babel';
-import { terser } from 'rollup-plugin-terser';
+import resolve from '@rollup/plugin-node-resolve';
+import commonjs from '@rollup/plugin-commonjs';
+import replace from '@rollup/plugin-replace';
+import babel from '@rollup/plugin-babel';
+import terser from '@rollup/plugin-terser';
 
 const production = (process.env.NODE_ENV === 'production');
 
@@ -25,6 +25,7 @@ const legacyPlugins = createPluginConfig([
 function createPluginConfig(browsers) {
 	return [
 		babel({
+			babelHelpers: 'bundled',
 			babelrc: false,
 			exclude: 'node_modules/**',
 			presets: [
@@ -48,6 +49,7 @@ function createPluginConfig(browsers) {
 		commonjs(),
 		replace({
 			exclude: 'node_modules/**',
+			preventAssignment: true,
 			ENV: JSON.stringify(process.env.NODE_ENV || 'development'),
 		}),
 		terser()
